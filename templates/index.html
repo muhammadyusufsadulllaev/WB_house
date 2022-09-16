@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}
+    Mavjud kitoblar
+{% endblock %}
+
+{% block content %}
+    <!-- ======= Latest Properties Section ======= -->
+
+    <div>
+        <a href="{% url 'add-house' %}">Add House</a>
+    </div>
+
+    <div class="intro intro-carousel swiper position-relative">
+
+        <div class="swiper-wrapper">
+    
+          <div class="swiper-slide carousel-item-a intro-item bg-image" style="background-image: url(static/assets/img/slide-1.jpg)">
+            <div class="overlay overlay-a"></div>
+            <div class="intro-content display-table">
+              <div class="table-cell">
+                <div class="container">
+                  <div class="row">
+                    <div class="col-lg-8">
+                      <div class="intro-body">
+                        <div class="tm-gallery">
+                            <div class="row">
+                                {% for item in object_list %}
+                                    <figure class="col-lg-3 col-md-4 col-sm-6 col-12 tm-gallery-item">
+                                        <a href="{% url 'view-house' item.id %}">
+                                            <div class="tm-gallery-item-overlay">
+                                                {% if item.image %}
+                                                <img src="{{item.image.url}}" alt="{{item.description}}" class="img-fluid tm-img-center" width="220" height="340">
+                                                {% endif %}
+                                            </div>
+                                            
+                                            <p class="tm-figcaption">{{item.description}} | {{item.price}}</p>
+                                        </a>
+                                    </figure>
+                                <br>
+                                {% endfor %} 
+                            </div>   
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+        </div>
+
+
+     
+    
+        </div>
+      </section><!-- End Latest Properties Section -->
+{% endblock %}

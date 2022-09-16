@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block title %}
+    Login Page
+{% endblock %}
+{% load socialaccount %}
+
+{% block content %}
+{{error_msg}}
+<form action="" method="post">
+    {% csrf_token %}
+    <br><br><br><br><br>
+    {{form.as_p}}
+    <input type="submit" value="login">
+</form>
+
+if you do not have account, please <a href="{% url 'register' %}">Register</a>
+<br>
+
+<a href="{% provider_login_url 'google' %}">Sing in By Google</a>
+
+{% endblock %}
